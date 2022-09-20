@@ -16,4 +16,5 @@
     <color name="darkGreen">#004203</color>
     <color name="green2">#53B175</color>
     <color name="menu_color">#eeeeee</color>
+    <color name="transperent">#00FFFFFF</color>
 </resources>

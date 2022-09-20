@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="totalPrice"
+            type="String" />
+
+        <variable
+            name="Product1"
+            type="com.example.dayfourtask.Product" />
+
+        <variable
+            name="Product2"
+            type="com.example.dayfourtask.Product" />
+
+        <variable
+            name="Product3"
+            type="com.example.dayfourtask.Product" />
+
+        <variable
+            name="Product4"
+            type="com.example.dayfourtask.Product" />
+
+        <variable
+            name="message"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/listOfProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/MyCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="45dp"
+                    android:text="My Cart"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@color/gray"
+                    android:textAlignment="center" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp">
+
+                    <ImageView
+                        android:id="@+id/productPicture"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="fitXY"
+                        android:src="@{Product1.productPicture}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="@{Product1.productName}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/productPicture"
+                        app:layout_constraintTop_toTopOf="@id/productPicture" />
+
+                    <TextView
+                        android:id="@+id/productDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{Product1.productDescription}"
+                        android:textColor="@color/gray2"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/productName"
+                        app:layout_constraintTop_toBottomOf="@id/productName" />
+
+                    <ImageView
+                        android:id="@+id/remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_baseline_close_24"
+                        app:layout_constraintBottom_toBottomOf="@id/productName"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/productName" />
+
+                    <ImageButton
+                        android:id="@+id/decrease"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="decrease"
+                        android:src="@drawable/ic_baseline_remove_24"
+                        app:layout_constraintStart_toStartOf="@id/productDescription"
+                        app:layout_constraintTop_toBottomOf="@id/productDescription" />
+
+                    <TextView
+                        android:id="@+id/numberOfProducts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@{Product1.numberOfProducts}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease"
+                        app:layout_constraintStart_toEndOf="@id/decrease"
+                        app:layout_constraintTop_toTopOf="@id/decrease" />
+
+                    <ImageButton
+                        android:id="@+id/increase"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="Increase"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease"
+                        app:layout_constraintStart_toEndOf="@id/numberOfProducts"
+                        app:layout_constraintTop_toTopOf="@id/decrease"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Product1.price}"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/increase"
+                        app:layout_constraintEnd_toEndOf="@id/remove"
+                        app:layout_constraintTop_toTopOf="@id/increase"
+
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp">
+
+                    <ImageView
+                        android:id="@+id/productPicture2"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="fitXY"
+                        android:src="@{Product2.productPicture}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/productName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="@{Product2.productName}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/productPicture2"
+                        app:layout_constraintTop_toTopOf="@id/productPicture2" />
+
+                    <TextView
+                        android:id="@+id/productDescription2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{Product2.productDescription}"
+                        android:textColor="@color/gray2"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/productName2"
+                        app:layout_constraintTop_toBottomOf="@id/productName2" />
+
+                    <ImageView
+                        android:id="@+id/remove2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_baseline_close_24"
+                        app:layout_constraintBottom_toBottomOf="@id/productName2"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/productName2" />
+
+                    <ImageButton
+                        android:id="@+id/decrease2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="decrease2"
+                        android:src="@drawable/ic_baseline_remove_24"
+                        app:layout_constraintStart_toStartOf="@id/productDescription2"
+                        app:layout_constraintTop_toBottomOf="@id/productDescription2" />
+
+                    <TextView
+                        android:id="@+id/numberOfProducts2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@{Product2.numberOfProducts}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease2"
+                        app:layout_constraintStart_toEndOf="@id/decrease2"
+                        app:layout_constraintTop_toTopOf="@id/decrease2" />
+
+                    <ImageButton
+                        android:id="@+id/increase2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="Increase2"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease2"
+                        app:layout_constraintStart_toEndOf="@id/numberOfProducts2"
+                        app:layout_constraintTop_toTopOf="@id/decrease2"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/productPrice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Product2.price}"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/increase2"
+                        app:layout_constraintEnd_toEndOf="@id/remove2"
+                        app:layout_constraintTop_toTopOf="@id/increase2"
+
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp">
+
+                    <ImageView
+                        android:id="@+id/productPicture3"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="fitXY"
+                        android:src="@{Product3.productPicture}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/productName3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="@{Product3.productName}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/productPicture3"
+                        app:layout_constraintTop_toTopOf="@id/productPicture3" />
+
+                    <TextView
+                        android:id="@+id/productDescription3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{Product3.productDescription}"
+                        android:textColor="@color/gray2"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/productName3"
+                        app:layout_constraintTop_toBottomOf="@id/productName3" />
+
+                    <ImageView
+                        android:id="@+id/remove3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_baseline_close_24"
+                        app:layout_constraintBottom_toBottomOf="@id/productName3"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/productName3" />
+
+                    <ImageButton
+                        android:id="@+id/decrease3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="decrease3"
+                        android:src="@drawable/ic_baseline_remove_24"
+                        app:layout_constraintStart_toStartOf="@id/productDescription3"
+                        app:layout_constraintTop_toBottomOf="@id/productDescription3" />
+
+                    <TextView
+                        android:id="@+id/numberOfProducts3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@{Product3.numberOfProducts}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease3"
+                        app:layout_constraintStart_toEndOf="@id/decrease3"
+                        app:layout_constraintTop_toTopOf="@id/decrease3" />
+
+                    <ImageButton
+                        android:id="@+id/increase3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="Increase3"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease3"
+                        app:layout_constraintStart_toEndOf="@id/numberOfProducts3"
+                        app:layout_constraintTop_toTopOf="@id/decrease3"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/productPrice3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Product3.price}"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/increase3"
+                        app:layout_constraintEnd_toEndOf="@id/remove3"
+                        app:layout_constraintTop_toTopOf="@id/increase3"
+
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp">
+
+                    <ImageView
+                        android:id="@+id/productPicture4"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="fitXY"
+                        android:src="@{Product4.productPicture}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/productName4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="@{Product4.productName}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/productPicture4"
+                        app:layout_constraintTop_toTopOf="@id/productPicture4" />
+
+                    <TextView
+                        android:id="@+id/productDescription4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{Product4.productDescription}"
+                        android:textColor="@color/gray2"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/productName4"
+                        app:layout_constraintTop_toBottomOf="@id/productName4" />
+
+                    <ImageView
+                        android:id="@+id/remove4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_baseline_close_24"
+                        app:layout_constraintBottom_toBottomOf="@id/productName4"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/productName4" />
+
+                    <ImageButton
+                        android:id="@+id/decrease4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="decrease4"
+                        android:src="@drawable/ic_baseline_remove_24"
+                        app:layout_constraintStart_toStartOf="@id/productDescription4"
+                        app:layout_constraintTop_toBottomOf="@id/productDescription4" />
+
+                    <TextView
+                        android:id="@+id/numberOfProducts4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@{Product4.numberOfProducts}"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease4"
+                        app:layout_constraintStart_toEndOf="@id/decrease4"
+                        app:layout_constraintTop_toTopOf="@id/decrease4" />
+
+                    <ImageButton
+                        android:id="@+id/increase4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/counter_shape"
+                        android:onClick="Increase4"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:layout_constraintBottom_toBottomOf="@id/decrease4"
+                        app:layout_constraintStart_toEndOf="@id/numberOfProducts4"
+                        app:layout_constraintTop_toTopOf="@id/decrease4"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/productPrice4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Product4.price}"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/increase4"
+                        app:layout_constraintEnd_toEndOf="@id/remove4"
+                        app:layout_constraintTop_toTopOf="@id/increase4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/checkoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="90dp"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/button_shape"
+                        android:onClick="goToCheckout"
+                        android:padding="20dp"
+                        android:text="Go to checkout"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/total_price"
+                        android:padding="5dp"
+                        android:text="@{totalPrice}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:translationZ="90dp"
+                        app:layout_constraintBottom_toBottomOf="@id/checkoutButton"
+                        app:layout_constraintEnd_toEndOf="@id/checkoutButton"
+                        app:layout_constraintTop_toTopOf="@id/checkoutButton" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="175dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="20dp"
+        android:elevation="6dp"
+        android:background="@drawable/exclusive_list_item_border">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="180dp"
+            android:layout_height="250dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:scaleType="centerInside"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/fruitImage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/banana" />
+
+            <TextView
+                android:id="@+id/fruitName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Organic Bananas"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/fruitImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/fruitImage"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/weight"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"
+                android:text="7pcs, Priceeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/fruitName"
+                app:layout_constraintTop_toBottomOf="@+id/fruitName"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/fruitName"
+                app:layout_constraintTop_toBottomOf="@+id/weight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="$4.99"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="30dp" />
+
+            <ImageView
+
+                app:layout_constraintBottom_toBottomOf="@+id/price"
+                app:layout_constraintTop_toTopOf="@id/price"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/add"
+                app:layout_constraintEnd_toEndOf="@id/fruitImage"
+                android:background="@drawable/add_item_shape"
+                android:src="@drawable/white_add" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
